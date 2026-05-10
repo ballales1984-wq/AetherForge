@@ -12,7 +12,7 @@ export function ShowroomCanvas() {
       <spotLight position={[2.5, 5, 3]} angle={0.4} penumbra={0.7} intensity={8} castShadow />
       <HypercarModel />
       <ContactShadows position={[0, -0.48, 0]} opacity={0.55} scale={7} blur={2.2} far={2} />
-      <Environment preset="city" />
+      <Environment preset="sunset" />
       <OrbitControls enablePan={false} minDistance={4} maxDistance={8} minPolarAngle={Math.PI / 3.2} maxPolarAngle={Math.PI / 2.05} />
     </Canvas>
   );

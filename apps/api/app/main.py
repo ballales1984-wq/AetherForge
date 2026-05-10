@@ -14,8 +14,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-GROK_API_KEY = os.getenv("GROK_API_KEY")
-API_KEY = GROK_API_KEY
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+API_KEY = GROQ_API_KEY
 GROQ_API_URL = "https://api.groq.com/v1/chat/completions"
 
 

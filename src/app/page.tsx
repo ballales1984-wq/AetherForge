@@ -55,7 +55,7 @@ export default function Home() {
       <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/10 via-[#050505] to-[#050505]" />
         <div className="ambient-glow absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(6,182,212,0.4),rgba(0,0,0,0))]" />
-        <div className="absolute inset-0 bg-noise opacity-[0.03]" style={{ backgroundImage: "url('/noise-texture.png')" }} />
+        <div className="absolute inset-0 bg-noise opacity-[0.03]" />
       </div>
 
       <Header />
