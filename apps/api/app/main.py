@@ -36,6 +36,11 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.get("/healthz")
+def healthz() -> dict[str, str]:
+    return {"status": "ok"}
+
+
 @app.post("/commissions")
 def create_commission(request: CommissionRequest) -> dict[str, str]:
     return {
