@@ -5,8 +5,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Showroom } from "@/components/Showroom";
 import { Collection } from "@/components/Collection";
-import { DesignLab } from "@/components/DesignLab";
-import { Commission } from "@/components/Commission";
+import { DesignCopilot } from "@/components/DesignCopilot";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -84,8 +83,7 @@ export default function Home() {
           <Collection />
         </section>
 
-        <DesignLab />
-        <Commission />
+        <DesignCopilot />
       </main>
 
       <footer className="relative py-16 border-t border-white/10">
