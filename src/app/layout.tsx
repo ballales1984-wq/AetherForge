@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "AetherForge | Automotive Concept Studio",
     description:
       "Cinematic hypercar concepts, immersive showroom experiences, and premium automotive design packages.",
-    images: ["/work/aether-veloce.png"],
+    images: ["/work/real-concepts/red-track-hypercar/red-track-front.jpeg"],
   },
 };
 

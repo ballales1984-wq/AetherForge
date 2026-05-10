@@ -16,23 +16,23 @@ export function Collection() {
         </p>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="space-y-8">
         {projects.map((project) => (
-          <article key={project.slug} data-reveal className="group overflow-hidden border border-white/10 bg-forge-panel">
-            <div className="relative aspect-[4/5] overflow-hidden bg-black">
+          <article key={project.slug} data-reveal className="grid overflow-hidden border border-white/10 bg-forge-panel md:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative min-h-[360px] overflow-hidden bg-black md:min-h-[520px]">
               <Image
                 src={project.image}
                 alt={`${project.title} automotive concept`}
                 fill
-                sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-105"
+                sizes="(min-width: 768px) 52vw, 100vw"
+                className="object-cover"
               />
             </div>
-            <div className="p-5">
+            <div className="flex flex-col justify-between p-5 md:p-7">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-display text-xl font-semibold text-white">{project.title}</h3>
-                  <p className="mt-1 text-sm text-forge-silver">{project.category}</p>
+                  <p className="font-display text-xs uppercase tracking-[0.22em] text-forge-ember">{project.category}</p>
+                  <h3 className="mt-3 font-display text-3xl font-semibold text-white md:text-5xl">{project.title}</h3>
                 </div>
                 <span className="text-sm text-forge-ember">{project.year}</span>
               </div>
@@ -41,6 +41,19 @@ export function Collection() {
                   <span key={spec} className="border border-white/10 px-3 py-1 text-xs text-forge-silver">
                     {spec}
                   </span>
+                ))}
+              </div>
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                {project.gallery.map((image, index) => (
+                  <div key={image} className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-black">
+                    <Image
+                      src={image}
+                      alt={`${project.title} view ${index + 1}`}
+                      fill
+                      sizes="(min-width: 768px) 24vw, 50vw"
+                      className="object-cover transition duration-500 hover:scale-105"
+                    />
+                  </div>
                 ))}
               </div>
             </div>

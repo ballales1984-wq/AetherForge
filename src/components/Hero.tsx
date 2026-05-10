@@ -5,7 +5,7 @@ export function Hero() {
     <section data-hero className="relative min-h-screen overflow-hidden">
       <Image
         data-hero-image
-        src="/work/aether-veloce.png"
+        src="/work/real-concepts/red-track-hypercar/red-track-front.jpeg"
         alt="AetherForge red hypercar concept"
         fill
         priority
