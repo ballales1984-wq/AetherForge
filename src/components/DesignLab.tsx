@@ -1,6 +1,34 @@
-import { services } from "@/data/projects";
+"use client";
+
+import { useState } from "react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export function DesignLab() {
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleGenerate = async () => {
+    if (!prompt.trim()) return;
+    setIsLoading(true);
+    setResponse(null);
+
+    try {
+      const res = await fetch(`${API_URL}/ai/generate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt, model: "llama-3.3-70b-versatile" }),
+      });
+      const data = await res.json();
+      setResponse(data.text);
+    } catch {
+      setResponse("Error generating response. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section id="lab" className="relative bg-[#050505] py-32">
       <div className="absolute inset-0 overflow-hidden">
@@ -14,25 +42,39 @@ export function DesignLab() {
             <span className="bg-gradient-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-transparent">Sketch, AI finishing, 3D and launch-grade storytelling.</span>
           </h2>
         </div>
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {services.map((service, index) => (
-            <div key={service} data-reveal className="rounded-xl border border-white/10 bg-white/5 p-6 transition hover:border-cyan-500/50">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300 font-display text-sm">
-                  {index + 1}
-                </span>
-                <p className="font-display text-lg font-semibold text-white">{service}</p>
-              </div>
+        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          <div data-reveal>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+              <h3 className="font-display text-lg font-semibold text-white mb-4">AI Concept Generator</h3>
+              <textarea
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                placeholder="Describe your automotive concept... (e.g., 'A futuristic electric hypercar with gull-wing doors and adaptive aerodynamics')"
+                className="w-full h-32 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300/20 resize-none"
+              />
+              <button
+                onClick={handleGenerate}
+                disabled={isLoading || !prompt.trim()}
+                className="mt-4 w-full rounded-lg bg-gradient-to-r from-cyan-300 to-cyan-400 px-6 py-3 font-semibold text-black transition hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.5)] disabled:opacity-50"
+              >
+                {isLoading ? "Generating..." : "Generate Concept"}
+              </button>
             </div>
-          ))}
-        </div>
-        <div className="mt-12 flex flex-wrap gap-4">
-          <button className="rounded-lg bg-gradient-to-r from-cyan-300 to-cyan-400 px-6 py-3 font-semibold text-black transition hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.5)]">
-            Start a Project
-          </button>
-          <button className="rounded-lg border border-cyan-300/50 px-6 py-3 font-semibold text-cyan-300 transition hover:bg-cyan-300/10 hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.3)]">
-            View Process
-          </button>
+          </div>
+          <div data-reveal>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-6 min-h-[200px]">
+              <h3 className="font-display text-lg font-semibold text-white mb-3">Generated Output</h3>
+              {isLoading ? (
+                <div className="flex items-center justify-center h-48">
+                  <div className="animate-pulse text-cyan-300">Generating...</div>
+                </div>
+              ) : response ? (
+                <p className="text-white/80 leading-relaxed whitespace-pre-wrap">{response}</p>
+              ) : (
+                <p className="text-white/40 italic">Your AI-generated concept will appear here...</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
