@@ -99,14 +99,12 @@ Frontend (.env.local):
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
 GROQ_API_KEY=your_key_here
-OPENAI_API_KEY=optional_fallback
 ```
 
 Backend (apps/api/.env):
 
 ```env
 GROQ_API_KEY=your_key_here
-OPENAI_API_KEY=optional
 ```
 
 ---
