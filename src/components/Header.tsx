@@ -1,7 +1,7 @@
 const navItems = [
   { href: "#showroom", label: "Showroom" },
   { href: "#collection", label: "Collection" },
-  { href: "#design-lab", label: "Design Lab" },
+  { href: "#lab", label: "Design Lab" },
   { href: "#commission", label: "Commission" },
 ];
 
@@ -24,10 +24,10 @@ export function Header() {
           ))}
         </div>
         <a
-          href="#commission"
+          href="mailto:hello@aetherforge.studio"
           className="relative overflow-hidden rounded-full border border-cyan-500/50 bg-cyan-500/10 px-6 py-2 text-sm font-semibold text-cyan-200 shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all hover:bg-cyan-500/20 hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] md:inline-flex"
         >
-          <span className="relative z-10">Start Project</span>
+          <span className="relative z-10">Contact</span>
           <div className="absolute inset-0 -z-10 bg-cyan-500/20 blur-xl" />
         </a>
       </nav>
