@@ -41,7 +41,8 @@ The frontend deploys automatically from the main branch via Vercel.
 **Required Environment Variables:**
 
 - `NEXT_PUBLIC_API_URL` - https://aetherforge-qanw.onrender.com
-- `GROQ_API_KEY` - Your GROQ API key for AI features
+- `GROK_API_KEY` - Your GROK API key for AI features
+- `OPENAI_API_KEY` - Optional fallback if you prefer the OpenAI-compatible name
 
 ### Backend (Render)
 
@@ -52,7 +53,7 @@ The FastAPI backend deploys via Render using `render.yaml`.
 **Endpoints:**
 - `GET /health` - Health check
 - `POST /commissions` - Submit commission request
-- `POST /ai/generate` - AI text generation (requires OPENAI_API_KEY)
+- `POST /ai/generate` - AI text generation (requires `GROK_API_KEY` or `OPENAI_API_KEY`)
 
 ## Features
 
