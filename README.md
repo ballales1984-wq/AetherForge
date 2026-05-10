@@ -12,7 +12,7 @@ Digital studio car design - Next.js portfolio with interactive 3D showroom.
 
 ## Project Structure
 
-```
+```text
 src/
 ├── app/          # Next.js app router
 ├── components/   # UI components + Showroom 3D
@@ -39,14 +39,20 @@ npm run lint
 The frontend deploys automatically from the main branch via Vercel.
 
 **Required Environment Variables:**
-- `NEXT_PUBLIC_API_URL` - URL of the Render API (default: https://aetherforge-api.onrender.com)
+
+- `NEXT_PUBLIC_API_URL` - https://aetherforge-qanw.onrender.com
+- `GROQ_API_KEY` - Your GROQ API key for AI features
 
 ### Backend (Render)
 
 The FastAPI backend deploys via Render using `render.yaml`.
 
-**Build Command:** `pip install -r apps/api/requirements.txt`
-**Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+**URL:** https://aetherforge-qanw.onrender.com
+
+**Endpoints:**
+- `GET /health` - Health check
+- `POST /commissions` - Submit commission request
+- `POST /ai/generate` - AI text generation (requires OPENAI_API_KEY)
 
 ## Features
 
