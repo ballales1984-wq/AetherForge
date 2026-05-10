@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 export function Commission() {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,9 +12,37 @@ export function Commission() {
     budget: "",
     timeline: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch(`${API_URL}/commissions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          brief: formData.project,
+          budget_range: formData.budget || undefined,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", project: "", budget: "", timeline: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,11 +118,18 @@ export function Commission() {
               />
             </div>
           </div>
+          {submitStatus === "success" && (
+            <p className="text-cyan-300 text-sm">Commission request submitted successfully!</p>
+          )}
+          {submitStatus === "error" && (
+            <p className="text-red-400 text-sm">Failed to submit. Please try again.</p>
+          )}
           <button
             type="submit"
-            className="rounded-lg bg-gradient-to-r from-cyan-300 to-cyan-400 px-8 py-4 font-semibold text-black transition hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.4)]"
+            disabled={isSubmitting}
+            className="rounded-lg bg-gradient-to-r from-cyan-300 to-cyan-400 px-8 py-4 font-semibold text-black transition hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.4)] disabled:opacity-50"
           >
-            Submit Commission Request
+            {isSubmitting ? "Submitting..." : "Submit Commission Request"}
           </button>
         </form>
       </div>
