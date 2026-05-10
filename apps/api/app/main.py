@@ -15,9 +15,8 @@ app.add_middleware(
 )
 
 GROK_API_KEY = os.getenv("GROK_API_KEY")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-API_KEY = GROQ_API_KEY or GROK_API_KEY
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+API_KEY = GROK_API_KEY
+GROQ_API_URL = "https://api.groq.com/v1/chat/completions"
 
 
 class CommissionRequest(BaseModel):
