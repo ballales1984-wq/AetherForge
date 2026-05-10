@@ -6,13 +6,14 @@ import { HypercarModel } from "./HypercarModel";
 
 export function ShowroomCanvas() {
   return (
-    <Canvas camera={{ position: [4.4, 2.4, 4.8], fov: 42 }} shadows dpr={[1, 2]}>
+    <Canvas camera={{ position: [4.4, 2.4, 4.8], fov: 42 }} shadows dpr={[1, 2]} gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}>
       <color attach="background" args={["#050609"]} />
       <ambientLight intensity={0.75} />
-      <spotLight position={[2.5, 5, 3]} angle={0.4} penumbra={0.7} intensity={8} castShadow />
+      <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
+      <spotLight position={[2.5, 5, 3]} angle={0.4} penumbra={0.7} intensity={8} castShadow shadow-mapSize={[1024, 1024]} />
       <HypercarModel />
       <ContactShadows position={[0, -0.48, 0]} opacity={0.55} scale={7} blur={2.2} far={2} />
-      <Environment preset="sunset" />
+      <Environment preset="studio" environmentIntensity={0.4} />
       <OrbitControls enablePan={false} minDistance={4} maxDistance={8} minPolarAngle={Math.PI / 3.2} maxPolarAngle={Math.PI / 2.05} />
     </Canvas>
   );

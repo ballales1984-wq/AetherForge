@@ -6,7 +6,7 @@ import gsap from "gsap";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const linesRef = useRef<(HTMLParagraphElement | HTMLHeadingElement | HTMLDivElement)[]>([]);
+  const linesRef = useRef<Array<HTMLParagraphElement | HTMLHeadingElement | HTMLDivElement>>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -69,28 +69,28 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-24 pt-32 md:px-8">
         <div className="max-w-5xl">
           <p
-            ref={(el) => el && linesRef.current.push(el)}
+            ref={(el) => { if (el) linesRef.current.push(el); }}
             data-hero-line
             className="font-display text-sm uppercase tracking-[0.4em] text-cyan-300 drop-shadow-[0_0_12px_rgba(6,182,212,0.6)]"
           >
             Neo-Italian Hypercar Futurism
           </p>
           <h1
-            ref={(el) => el && linesRef.current.push(el)}
+            ref={(el) => { if (el) linesRef.current.push(el); }}
             data-hero-line
             className="mt-6 font-display text-5xl/[0.85] font-semibold text-white md:text-7xl lg:text-8xl xl:text-9xl"
           >
             Automotive concepts forged for the future.
           </h1>
           <p
-            ref={(el) => el && linesRef.current.push(el)}
+            ref={(el) => { if (el) linesRef.current.push(el); }}
             data-hero-line
             className="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg xl:text-xl"
           >
             AetherForge blends human sketching, AI finishing, cinematic art direction, and web-native 3D to present hypercar ideas like real luxury launches.
           </p>
           <div
-            ref={(el) => el && linesRef.current.push(el)}
+            ref={(el) => { if (el) linesRef.current.push(el); }}
             data-hero-line
             className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
