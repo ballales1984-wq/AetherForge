@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-forge-black: #050609;
+  --color-forge-ink: #090a0d;
+  --color-forge-panel: #111318;
+  --color-forge-line: #282d36;
+  --color-forge-mist: #e7e2d7;
+  --color-forge-silver: #bcc4c9;
+  --color-forge-red: #d9362f;
+  --color-forge-ember: #f08a3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #050609;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: #050609;
+  color: #f4efe6;
+}
+
+::selection {
+  background: #d9362f;
+  color: white;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(188, 196, 201, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(188, 196, 201, 0.08) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.cinematic-mask {
+  mask-image: linear-gradient(180deg, transparent 0%, black 10%, black 86%, transparent 100%);
+}
