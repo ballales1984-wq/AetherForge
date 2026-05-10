@@ -28,21 +28,21 @@ export function CinematicExperience() {
       });
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
-        gsap.fromTo(
+        const animation = gsap.fromTo(
           element,
-          { y: 36, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 82%",
-            },
-          },
+          { y: 36, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: 0.9, ease: "power3.out", paused: true },
         );
+
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 88%",
+          once: true,
+          onEnter: () => animation.play(),
+        });
       });
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     });
 
     return () => context.revert();
