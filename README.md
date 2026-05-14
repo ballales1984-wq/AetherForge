@@ -121,6 +121,31 @@ Required env vars:
 
 🔗 [View Live](https://aetherforge-qanw.vercel.app)
 
+### Custom Domain Setup
+
+To configure the custom domain `aetherforge.studio`:
+
+1. **Frontend (Vercel)**:
+   - Add domain in Vercel project settings
+   - Configure DNS records: 
+     - CNAME record for `www` pointing to `cname.vercel-dns.com`
+     - ALIAS/ANAME record for `@` pointing to `cname.vercel-dns.com` (if supported)
+   - Update `vercel.json` with domains array
+
+2. **Backend (Render)**:
+   - Add custom domain in Render service settings
+   - Update API URL in frontend env vars to use custom domain
+   - Configure DNS:
+     - CNAME record for `api` pointing to your Render service URL
+
+3. **Environment Updates**:
+   - Frontend `.env.local`: 
+     ```
+     NEXT_PUBLIC_API_URL=https://api.aetherforge.studio
+     GROQ_API_KEY=your_key_here
+     ```
+   - Backend needs `GROQ_API_KEY` set in Render environment
+
 ### Backend — Render
 
 Deployed via `render.yaml` (FastAPI worker).

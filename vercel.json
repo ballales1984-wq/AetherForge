@@ -5,7 +5,11 @@
   "installCommand": "npm install",
   "outputDirectory": ".next",
   "regions": ["fra1"],
+  "domains": [
+    "aetherforge.studio",
+    "www.aetherforge.studio"
+  ],
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://aetherforge-api.onrender.com"
+    "NEXT_PUBLIC_API_URL": "https://api.aetherforge.studio"
   }
 }

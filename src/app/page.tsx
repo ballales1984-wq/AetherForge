@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { Showroom } from "@/components/Showroom";
 import { Collection } from "@/components/Collection";
 import { DesignCopilot } from "@/components/DesignCopilot";
+import { EngineeringLab } from "@/app/engineering-lab/page";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -86,13 +87,19 @@ export default function Home() {
         <DesignCopilot />
       </main>
 
+      {/* Engineering Lab */}
+      <section id="engineering-lab" className="relative py-32">
+        <EngineeringLab />
+      </section>
+
+      {/* Footer */}
       <footer className="relative py-16 border-t border-white/10">
         <div className="container mx-auto px-6 text-center">
           <p className="text-white/50 text-sm">
             © {new Date().getFullYear()} AetherForge — Digital studio car design.
           </p>
           <p className="text-white/30 text-xs mt-2">
-            Crafted with Three.js, FastAPI.
+            Crafted with Three.js, FastAPI, and Unreal Engine 5.
           </p>
         </div>
       </footer>

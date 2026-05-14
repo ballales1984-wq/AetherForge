@@ -13,3 +13,5 @@ services:
       - key: GROQ_API_KEY
         value: GROQ_API_KEY
     autoDeploy: true
+    # Custom domains will be added through Render dashboard
+    # Domain: api.aetherforge.studio
